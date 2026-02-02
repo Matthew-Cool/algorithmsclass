@@ -14,6 +14,7 @@ template<class T>
 class LinkedList {
     private:
          LinkedListNode<T> *root;
+         int length;
     public:
          LinkedList();
          ~LinkedList();

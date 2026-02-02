@@ -23,7 +23,7 @@ LinkedList<T>::LinkedList() {
 template<class T>
 LinkedList<T>::~LinkedList() {
     // YOUR CODE HERE
-    delete(this->root)
+    delete(this->root);
     // END OF YOUR CODE
 }
 
@@ -31,27 +31,29 @@ LinkedList<T>::~LinkedList() {
 template<class T>
 LinkedListNode<T>* LinkedList<T>::insert(T value) {
     // YOUR CODE HERE
-    currentNode = this->root; //possible edge case when length = 0
-    while (!currentNode){
+    LinkedListNode<T>* currentNode = this->root; //possible edge case when length = 0
+    while (currentNode){
         if (currentNode->value == value) { //prob can't use this lmao, will get back to it
             return currentNode; //return pointer to node that already exists
         } else if (!currentNode->next) {
-            LinkedListNode* node = new LinkedListNode(value, nullptr, &currentNode)
+            LinkedListNode<T>* node = new LinkedListNode<T>(value, nullptr, currentNode);
+            currentNode->next = node;
             this->length++;
-            return &node;
+            return node;
         } else {
             currentNode = currentNode->next;
-            std::cout << "switch to next node" << std::endl;
+            //std::cout << "switch to next node" << std::endl;
         }
     }
 
     if(currentNode == nullptr){
-        LinkedListNode* node = new LinkedListNode(value, nullptr, &currentNode)
+        LinkedListNode<T>* node = new LinkedListNode<T>(value, nullptr, nullptr);
+        this->root = node;
         this->length++;
-        return &node;
+        return node;
     }
 
-    std::cout << "oh shit 1" << std::endl;
+    //std::cout << "oh shit 1" << std::endl;
     return nullptr;
     
     // END OF YOUR CODE
@@ -60,8 +62,8 @@ LinkedListNode<T>* LinkedList<T>::insert(T value) {
 template<class T>
 LinkedListNode<T>* LinkedList<T>::find(T value) {
     // YOUR CODE HERE
-    currentNode = this->root;
-    while (!currentNode){
+    LinkedListNode<T>* currentNode = this->root;
+    while (currentNode){
         if (currentNode->value == value){
             return currentNode;
         } else {
@@ -76,35 +78,38 @@ LinkedListNode<T>* LinkedList<T>::find(T value) {
 template<class T>
 LinkedListNode<T>* LinkedList<T>::remove(T value) {
     // YOUR CODE HERE
-    currentNode = this->root;
-    while(!currentNode){
+    LinkedListNode<T>* currentNode = this->root;
+    while(currentNode){
         if (currentNode->value == value){
-            if(currentNode->next != nullptr){
-                nextNode = currentNode->next;
-                prevNode = currentNode->prev;
+            if(currentNode->next != nullptr && currentNode->prev != nullptr){
+                LinkedListNode<T>* nextNode = currentNode->next;
+                LinkedListNode<T>* prevNode = currentNode->prev;
                 prevNode->next = nextNode;
                 nextNode->prev = prevNode;
-                currentNode->next = nullptr;
-                currentNode->prev = nullptr;
-                delete(currentNode)
+                delete(currentNode);
+                this->length--;
+            } else if(currentNode->next != nullptr){
+                // Node is at the start
+                LinkedListNode<T>* nextNode = currentNode->next;
+                nextNode->prev = nullptr;
+                this->root = nextNode;
+                delete(currentNode);
+                this->length--;
+            } else if(currentNode->prev != nullptr){
+                // Node is at the end
+                LinkedListNode<T>* prevNode = currentNode->prev;
+                prevNode->next = nullptr;
+                delete(currentNode);
                 this->length--;
             } else {
-                if(currentNode->prev != prev){
-                    prevNode = currentNode->prev;
-                    prevNode->next = nullptr;
-                    currentNode->prev = nullptr;
-                    delete(currentNode)
-                    this->length--;
-                } else { //only this value is in the linked list, so remove it and linkedlist empty
-                    this->root = nullptr;
-                    delete(currentNode)
-                    this->length--;
-                }
-                
+                // Only node in the list
+                this->root = nullptr;
+                delete(currentNode);
+                this->length--;
             }
-        } else {
-            currentNode = currentNode->next;
+            return this->root;
         }
+        currentNode = currentNode->next;
     }
 
     return this->root;
