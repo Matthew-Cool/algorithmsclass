@@ -20,14 +20,14 @@ Queue<T>::Queue() {
 template<class T>
 Queue<T>::~Queue() {
     // YOUR CODE HERE 
-
+    
     // END OF YOUR CODE HERE
 }
 
 template<class T>
 bool Queue<T>::empty() {
     // YOUR CODE HERE
-
+    return (this->head != nullptr) && (this->tail != nullptr);
     // END OF YOUR CODE HERE
 }
 
@@ -38,7 +38,20 @@ T Queue<T>::pop() {
     }
     T value = this->head->value;
     // YOUR CODE HERE
+    nextNode = nullptr;
+    if (this->head->next != nullptr){
+        nextNode = this->head->next;
+    } else {
+        this->head = nullptr;
+        this->tail = nullptr;
+        return value;
+    }
 
+    this->head->next = nullptr;
+    this->head->prev = nullptr;
+    delete(this->head);
+
+    this->head = nextNode;
     // END OF YOUR CODE HERE
     return value;
 }
@@ -47,7 +60,14 @@ template<class T>
 void Queue<T>::push(T value) {
     QueueNode<T> *p = new QueueNode<T>(value, NULL, NULL);
     // YOUR CODE HERE
-
+    if (this->tail != nullptr){
+        this->tail->next = p;
+        p->prev = this->tail;
+        this->tail = p;
+    } else {
+        this->head = p;
+        this->tail = p;
+    }
     // END OF YOUR CODE HERE
 }
 
