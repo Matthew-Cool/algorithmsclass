@@ -62,7 +62,11 @@ LinkedListNode<T>* LinkedList<T>::find(T value) {
     // YOUR CODE HERE
     currentNode = this->root;
     while (!currentNode){
-        break
+        if (currentNode->value == value){
+            return currentNode;
+        } else {
+            currentNode = currentNode->next;
+        }
     }
 
     return nullptr;
@@ -72,7 +76,38 @@ LinkedListNode<T>* LinkedList<T>::find(T value) {
 template<class T>
 LinkedListNode<T>* LinkedList<T>::remove(T value) {
     // YOUR CODE HERE
-    
+    currentNode = this->root;
+    while(!currentNode){
+        if (currentNode->value == value){
+            if(currentNode->next != nullptr){
+                nextNode = currentNode->next;
+                prevNode = currentNode->prev;
+                prevNode->next = nextNode;
+                nextNode->prev = prevNode;
+                currentNode->next = nullptr;
+                currentNode->prev = nullptr;
+                delete(currentNode)
+                this->length--;
+            } else {
+                if(currentNode->prev != prev){
+                    prevNode = currentNode->prev;
+                    prevNode->next = nullptr;
+                    currentNode->prev = nullptr;
+                    delete(currentNode)
+                    this->length--;
+                } else { //only this value is in the linked list, so remove it and linkedlist empty
+                    this->root = nullptr;
+                    delete(currentNode)
+                    this->length--;
+                }
+                
+            }
+        } else {
+            currentNode = currentNode->next;
+        }
+    }
+
+    return this->root;
     // END OF YOUR CODE
 }
 
