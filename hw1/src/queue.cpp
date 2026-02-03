@@ -34,7 +34,7 @@ Queue<T>::~Queue() {
 template<class T>
 bool Queue<T>::empty() {
     // YOUR CODE HERE
-    return (this->head == nullptr) || (this->tail == nullptr);
+    return (this->head == nullptr) && (this->tail == nullptr);
     // END OF YOUR CODE HERE
 }
 
@@ -48,17 +48,17 @@ T Queue<T>::pop() {
     QueueNode<T>* nextNode = nullptr;
     if (this->head->next != nullptr){
         nextNode = this->head->next;
-    } else {
+    } else { //empty now
+        delete(this->head);
         this->head = nullptr;
         this->tail = nullptr;
         return value;
     }
 
-    this->head->next = nullptr;
-    this->head->prev = nullptr;
     delete(this->head);
 
     this->head = nextNode;
+    this->head->prev = nullptr;
     // END OF YOUR CODE HERE
     return value;
 }
