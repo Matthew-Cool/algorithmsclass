@@ -89,20 +89,17 @@ LinkedListNode<T>* LinkedList<T>::remove(T value) {
                 delete(currentNode);
                 this->length--;
             } else if(currentNode->next != nullptr){
-                // Node is at the start
                 LinkedListNode<T>* nextNode = currentNode->next;
                 nextNode->prev = nullptr;
                 this->root = nextNode;
                 delete(currentNode);
                 this->length--;
             } else if(currentNode->prev != nullptr){
-                // Node is at the end
                 LinkedListNode<T>* prevNode = currentNode->prev;
                 prevNode->next = nullptr;
                 delete(currentNode);
                 this->length--;
             } else {
-                // Only node in the list
                 this->root = nullptr;
                 delete(currentNode);
                 this->length--;
