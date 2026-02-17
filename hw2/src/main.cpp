@@ -8,6 +8,9 @@
 #include <sstream>
 #include <search.hpp>
 
+// added this, but I need to remove this...
+#include <limits>
+
 #ifdef OPENCV
 #include <opencv2/opencv.hpp>
 #endif
