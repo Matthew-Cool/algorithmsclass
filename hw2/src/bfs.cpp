@@ -11,6 +11,9 @@ void bfs(Graph &G, int start, int destination) {
         int u = queue.pop();
         // YOUR CODE HERE
         G.setVisited(u);
+        if (u == destination){
+            return;
+        }
         //END OF MY CODE
         int numberOfAdjacencyNodes = G.e[u].size();
         LinkedListNode<int> *p = G.e[u].getRoot();

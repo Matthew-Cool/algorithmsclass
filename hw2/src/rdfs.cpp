@@ -3,6 +3,9 @@
 void rdfs(Graph &G, int start, int destination) {
     // YOUR CODE HERE
     G.setVisited(start);
+    if(start == destination){
+        return;
+    }
     //END OF MY CODE HERE
     int numberOfAdjacencyNodes = G.e[start].size();
     LinkedListNode<int> *p = G.e[start].getRoot();

@@ -12,6 +12,9 @@ void dfs(Graph &G, int start, int destination) {
         if(!G.isVisited(u)){
             G.setVisited(u);
         }
+        if(u == destination){
+            return;
+        }
         //END OF MY CODE HERE
         int numberOfAdjacencyNodes = G.e[u].size();
         LinkedListNode<int> *p = G.e[u].getRoot();
