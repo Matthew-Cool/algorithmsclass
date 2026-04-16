@@ -28,16 +28,20 @@ BST<T>::~BST() { this->clear(this->root); }
 template<class T>
 void BST<T>::clear(BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr) return;
 
     clear(node->left);
     clear(node->right);
     delete node;
+=======
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 template<class T>
 BSTNode<T> *BST<T>::find(T key, BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
 
     BSTNode<T>* current = node;
     while(current != nullptr){
@@ -51,12 +55,16 @@ BSTNode<T> *BST<T>::find(T key, BSTNode<T> *node) {
     }
     return nullptr;
     //return nullptr; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 
 template<class T>
 BSTNode<T> *BST<T>::findMaximum(BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr){
         return nullptr;
     }
@@ -69,12 +77,16 @@ BSTNode<T> *BST<T>::findMaximum(BSTNode<T> *node) {
 
     return current;
     //return nullptr; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 
 template<class T>
 BSTNode<T> *BST<T>::findMinimum(BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr){
         return nullptr;
     }
@@ -87,12 +99,16 @@ BSTNode<T> *BST<T>::findMinimum(BSTNode<T> *node) {
 
     return current;
     //return nullptr; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 
 template<class T>
 BSTNode<T> *BST<T>::insert(T key, BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr) {
         return new BSTNode<T>(key, 0, nullptr, nullptr);
     }
@@ -105,11 +121,15 @@ BSTNode<T> *BST<T>::insert(T key, BSTNode<T> *node) {
     }
 
     return node;
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 template<class T>
 BSTNode<T> *BST<T>::remove(T key, BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr) return nullptr;
 
     if (key < node->key) {
@@ -146,6 +166,9 @@ BSTNode<T> *BST<T>::remove(T key, BSTNode<T> *node) {
     }
 
     return node;
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 

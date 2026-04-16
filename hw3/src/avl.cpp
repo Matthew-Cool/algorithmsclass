@@ -1,8 +1,11 @@
 #include <avl.hpp>
 
+<<<<<<< HEAD
 //needed to add this so my stuff will work :)
 #include <algorithm>
 
+=======
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 template<class T>
 int AVL<T>::getHeight(BSTNode<T> *node) {
     return (node == NULL) ? -1 : node->height;
@@ -16,6 +19,7 @@ int AVL<T>::getBalance(BSTNode<T> *node) {
 template<class T>
 BSTNode<T> *AVL<T>::rotateRight(BSTNode<T> *y) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     BSTNode<T>* x = y->left;
     BSTNode<T>* t2 = x->right;
 
@@ -29,11 +33,15 @@ BSTNode<T> *AVL<T>::rotateRight(BSTNode<T> *y) {
 
     return x;
     //return nullptr; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 template<class T>
 BSTNode<T> *AVL<T>::rotateLeft(BSTNode<T> *x) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     BSTNode<T>* y = x->right;
     BSTNode<T>* t2 = y->left;
 
@@ -47,11 +55,15 @@ BSTNode<T> *AVL<T>::rotateLeft(BSTNode<T> *x) {
 
     return y;
     //return nullptr; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 template<class T>
 BSTNode<T> *AVL<T>::insert(T key, BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr) {
         return new BSTNode<T>(key, 0, nullptr, nullptr);
     }
@@ -95,12 +107,16 @@ BSTNode<T> *AVL<T>::insert(T key, BSTNode<T> *node) {
     }
 
     return node; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 
 template<class T>
 BSTNode<T> *AVL<T>::remove(T key, BSTNode<T> *node) {
     // YOUR CODE HERE
+<<<<<<< HEAD
     if (node == nullptr) return nullptr;
 
     // standard BST remove
@@ -164,6 +180,9 @@ BSTNode<T> *AVL<T>::remove(T key, BSTNode<T> *node) {
     }
 
     return node; // Placeholder
+=======
+    return nullptr; // Placeholder
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 }
 
 template<class T>

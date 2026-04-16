@@ -13,10 +13,13 @@
 #include <opencv2/opencv.hpp>
 #endif
 
+<<<<<<< HEAD
 //looks like 2 headers were missing, I have added them here
 #include <limits>
 #include <sstream>
 
+=======
+>>>>>>> ec8c6336c37716261a571477eaca8255d0116b11
 /*******************************************************************************/
 //This Section is for the Grader. Do not modify this section.
 // Global constant filename. For Grading purpose. Don't modify this variable.
