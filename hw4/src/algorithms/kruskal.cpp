@@ -15,6 +15,20 @@ std::vector<Edge> constructMSTKruskal(Graph &G)
     DisjointSet djs(G.getN());
     // YOUR CODE HERE
 
+    if (!edges.empty()) {
+        msort(edges, 0, static_cast<int>(edges.size()) - 1);
+    }
+
+    for (const Edge& e : edges) {
+        if (!djs.isOnSameSet(e.u, e.v)) {
+            djs.join(e.u, e.v);
+            mst.push_back(e);
+
+            if (static_cast<int>(mst.size()) == G.getN() - 1) {
+                break;
+            }
+        }
+    }
 
     return mst;
 }

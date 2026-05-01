@@ -24,7 +24,44 @@ std::vector<Edge> constructMSTPrim(Graph &G)
 
     std::vector<Edge> mst;
     // YOUR CODE HERE
+    int n = G.getN();
+    if (n == 0) return mst;
 
+    std::vector<bool> visited(n, false);
+
+    int start = 0;
+    visited[start] = true;
+
+    for (const Edge& e : edges) {
+        if (e.u == start || e.v == start) {
+            heap.push(e);
+        }
+    }
+
+    while (!heap.empty() && static_cast<int>(mst.size()) < n - 1) {
+        Edge e = heap.top();
+        heap.pop();
+
+        int next = -1;
+
+        if (visited[e.u] && !visited[e.v]) {
+            next = e.v;
+        } else if (visited[e.v] && !visited[e.u]) {
+            next = e.u;
+        } else {
+            continue;
+        }
+
+        mst.push_back(e);
+        visited[next] = true;
+
+        for (const Edge& ne : edges) {
+            if ((ne.u == next && !visited[ne.v]) ||
+                (ne.v == next && !visited[ne.u])) {
+                heap.push(ne);
+            }
+        }
+    }
 
     return mst;
 }

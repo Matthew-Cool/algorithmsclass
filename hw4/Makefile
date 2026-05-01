@@ -29,15 +29,15 @@ ALG_DIR=${SRC_DIR}algorithms/
 
 # Default target: Compiles and then runs the .exe
 all: bin/integrated$(EXE)
-	.\bin\integrated$(EXE)
+	./bin/integrated$(EXE)
 
 # Compiles everything into a single integrated binary
-# @if not exist is the Windows cmd way to handle directory creation safely
+# mkdir -p is the shell-safe way to handle directory creation safely
 bin/integrated$(EXE): ${SRC_FILES} ${ALG_DIR}kruskal.cpp ${ALG_DIR}dijkstra.cpp ${ALG_DIR}prim.cpp
-	@if not exist bin mkdir bin
+	mkdir -p bin
 	${CXX} ${CFLAGS} -DKRUSKAL -DDIJKSTRA -DPRIM -DINTEGRATED $^ ${LDFLAGS} -o $@ 
 
-# Windows-specific cleanup using 'del' and 'rd'
+# Cleanup
 clean:
-	@if exist bin rmdir /s /q bin
+	rm -rf bin
 	@echo Cleaned build directory.
